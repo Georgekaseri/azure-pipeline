@@ -13,14 +13,3 @@ stages:
     jobDisplayName: Run smoke scenarios
     cucumberTag: '@smoke'
     artifactName: smoke-cucumber-html-report
-
-- template: templates/cucumber-stage.yml
-  parameters:
-    stageName: Regression
-    displayName: Regression tests
-    dependsOn: Smoke
-    condition: succeededOrFailed()
-    jobName: RegressionTests
-    jobDisplayName: Run regression scenarios
-    cucumberTag: '@regression'
-    artifactName: regression-cucumber-html-report

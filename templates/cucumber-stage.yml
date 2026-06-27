@@ -29,7 +29,7 @@ stages:
   - job: ${{ parameters.jobName }}
     displayName: ${{ parameters.jobDisplayName }}
     steps:
-    - task: NodeTool@0
+    - task: UseNode@1
       displayName: Use Node.js 20.x
       inputs:
         versionSpec: '20.x'

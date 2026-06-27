@@ -1,0 +1,15 @@
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+stages:
+- template: templates/cucumber-stage.yml
+  parameters:
+    stageName: Regression
+    displayName: Regression tests
+    jobName: RegressionTests
+    jobDisplayName: Run regression scenarios
+    cucumberTag: '@regression'
+    artifactName: regression-cucumber-html-report

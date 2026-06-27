@@ -89,3 +89,14 @@ npm run test:e2e:report
 ```
 
 HTML report path: `tests/reports/html/index.html`
+
+## Azure Pipelines
+
+This repo has two separate pipeline YAML files:
+
+```text
+azure-pipelines.yml
+azure-pipelines-regression.yml
+```
+
+Create two Azure DevOps pipelines and point one to each file so smoke and regression run independently.

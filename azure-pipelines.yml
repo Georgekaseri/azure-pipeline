@@ -4,12 +4,25 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
-stages:
-- template: templates/cucumber-stage.yml
-  parameters:
-    stageName: Smoke
-    displayName: Smoke tests
-    jobName: SmokeTests
-    jobDisplayName: Run smoke scenarios
-    cucumberTag: '@smoke'
-    artifactName: smoke-cucumber-html-report
+steps:
+- task: NodeTool@0
+  displayName: Use Node.js 20.x
+  inputs:
+    versionSpec: '20.x'
+
+- script: npm ci --include=dev --no-audit --no-fund
+  displayName: Install dependencies
+  env:
+    NODE_ENV: development
+
+- script: npx cucumber-js --tags "@smoke"
+  displayName: Run smoke scenarios
+
+- script: npm run report:generate
+  displayName: Generate HTML report
+
+- task: PublishPipelineArtifact@1
+  displayName: Publish HTML report
+  inputs:
+    targetPath: tests/reports/html
+    artifact: smoke-cucumber-html-report

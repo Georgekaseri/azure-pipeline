@@ -13,3 +13,6 @@ tests/reports/cucumber-report.json
 
 # local agent/tool state
 .qodo/
+
+# editor settings
+.vscode/

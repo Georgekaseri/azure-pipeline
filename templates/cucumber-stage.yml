@@ -1,0 +1,52 @@
+parameters:
+- name: stageName
+  type: string
+- name: displayName
+  type: string
+- name: dependsOn
+  type: string
+  default: ''
+- name: condition
+  type: string
+  default: ''
+- name: jobName
+  type: string
+- name: jobDisplayName
+  type: string
+- name: cucumberTag
+  type: string
+- name: artifactName
+  type: string
+
+stages:
+- stage: ${{ parameters.stageName }}
+  displayName: ${{ parameters.displayName }}
+  ${{ if ne(parameters.dependsOn, '') }}:
+    dependsOn: ${{ parameters.dependsOn }}
+  ${{ if ne(parameters.condition, '') }}:
+    condition: ${{ parameters.condition }}
+  jobs:
+  - job: ${{ parameters.jobName }}
+    displayName: ${{ parameters.jobDisplayName }}
+    steps:
+    - task: NodeTool@0
+      displayName: Use Node.js 20.x
+      inputs:
+        versionSpec: '20.x'
+
+    - script: npm ci
+      displayName: Install dependencies
+
+    - script: npx cucumber-js --tags "${{ parameters.cucumberTag }}"
+      displayName: Run Cucumber scenarios
+
+    - script: npm run report:generate
+      displayName: Generate HTML report
+      condition: succeededOrFailed()
+
+    - task: PublishPipelineArtifact@1
+      displayName: Publish HTML report
+      condition: succeededOrFailed()
+      inputs:
+        targetPath: tests/reports/html
+        artifact: ${{ parameters.artifactName }}

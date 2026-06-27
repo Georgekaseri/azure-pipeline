@@ -1,14 +1,26 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
-
 trigger:
 - main
 
 pool:
   vmImage: ubuntu-latest
 
-steps:
-- script: echo "Hello I am creating a pipeline!"
-  displayName: 'Run a one-line script'
+stages:
+- template: templates/cucumber-stage.yml
+  parameters:
+    stageName: Smoke
+    displayName: Smoke tests
+    jobName: SmokeTests
+    jobDisplayName: Run smoke scenarios
+    cucumberTag: '@smoke'
+    artifactName: smoke-cucumber-html-report
+
+- template: templates/cucumber-stage.yml
+  parameters:
+    stageName: Regression
+    displayName: Regression tests
+    dependsOn: Smoke
+    condition: succeededOrFailed()
+    jobName: RegressionTests
+    jobDisplayName: Run regression scenarios
+    cucumberTag: '@regression'
+    artifactName: regression-cucumber-html-report

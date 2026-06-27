@@ -17,7 +17,7 @@ Feature: Bahmni Login - Standard Demo
       | QA_URL   | username      | password      | login       | QA_DOMAIN         |
       | SIT_URL  | username      | password      | login       | SIT_DOMAIN        |
 
-  @auth
+  @auth @regression
   Scenario Outline: Login with valid credentials
     Given I open the application url "<urlKey>"
     When I enter credential "<usernameEnvKey>" into "<usernameField>"

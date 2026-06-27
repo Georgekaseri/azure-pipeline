@@ -10,5 +10,5 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- script: Hello I am creating a pipeline!
+- script: echo "Hello I am creating a pipeline!"
   displayName: 'Run a one-line script'

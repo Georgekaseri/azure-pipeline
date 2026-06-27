@@ -4,6 +4,7 @@ playwright-report/
 test-results/
 .env
 tests/reports/cucumber-report.json
+tests/reports/html/
 
 # macOS
 .DS_Store

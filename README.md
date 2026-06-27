@@ -67,3 +67,25 @@ npm run test:e2e:auth
 ```
 
 Cucumber JSON report will be generated at `tests/reports/cucumber-report.json`.
+
+## Generate HTML report
+
+After running tests, generate an HTML report:
+
+```bash
+npm run report:generate
+```
+
+Open the report in browser:
+
+```bash
+npm run report:open
+```
+
+Run all scenarios and build report in one command:
+
+```bash
+npm run test:e2e:report
+```
+
+HTML report path: `tests/reports/html/index.html`

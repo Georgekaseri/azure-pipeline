@@ -8,7 +8,10 @@
     "test:e2e:headed": "PW_HEADLESS=false cucumber-js --tags \"@smoke\"",
     "test:e2e:auth": "cucumber-js --tags \"@auth\"",
     "test:e2e:all": "cucumber-js",
-    "test:e2e:all:headed": "PW_HEADLESS=false cucumber-js"
+    "test:e2e:all:headed": "PW_HEADLESS=false cucumber-js",
+    "report:generate": "node scripts/generate-cucumber-report.js",
+    "report:open": "open tests/reports/html/index.html",
+    "test:e2e:report": "npm run test:e2e:all && npm run report:generate"
   },
   "keywords": [],
   "author": "",
@@ -18,6 +21,7 @@
     "@cucumber/cucumber": "^10.9.0",
     "@playwright/test": "^1.61.1",
     "dotenv": "^17.4.2",
+    "multiple-cucumber-html-reporter": "^3.9.0",
     "ts-node": "^10.9.2",
     "typescript": "^6.0.3"
   }

@@ -1,0 +1,24 @@
+{
+  "name": "azure-pipeline",
+  "version": "1.0.0",
+  "description": "Playwright + TypeScript + Cucumber framework for Bahmni login flow",
+  "scripts": {
+    "test": "npm run test:e2e",
+    "test:e2e": "cucumber-js --tags \"@smoke\"",
+    "test:e2e:headed": "PW_HEADLESS=false cucumber-js --tags \"@smoke\"",
+    "test:e2e:auth": "cucumber-js --tags \"@auth\"",
+    "test:e2e:all": "cucumber-js",
+    "test:e2e:all:headed": "PW_HEADLESS=false cucumber-js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@cucumber/cucumber": "^10.9.0",
+    "@playwright/test": "^1.61.1",
+    "dotenv": "^17.4.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^6.0.3"
+  }
+}

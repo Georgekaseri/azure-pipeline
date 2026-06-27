@@ -1,0 +1,15 @@
+node_modules/
+dist/
+playwright-report/
+test-results/
+.env
+tests/reports/cucumber-report.json
+
+# macOS
+.DS_Store
+
+# local logs
+*.log
+
+# local agent/tool state
+.qodo/

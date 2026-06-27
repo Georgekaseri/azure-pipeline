@@ -15,6 +15,9 @@ steps:
   env:
     NODE_ENV: development
 
+- script: npx playwright install --with-deps chromium
+  displayName: Install Playwright browser
+
 - script: npx cucumber-js --tags "@regression"
   displayName: Run regression scenarios
 

@@ -27,7 +27,6 @@ steps:
   env:
     REPORT_SUITE_NAME: Smoke Suite
     REPORT_TAG: "@smoke"
-    REPORT_THEME: hierarchy
     CI_PLATFORM: Azure DevOps
 
 - task: PublishPipelineArtifact@1

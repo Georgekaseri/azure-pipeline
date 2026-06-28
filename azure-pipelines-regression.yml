@@ -36,7 +36,6 @@ steps:
   env:
     REPORT_SUITE_NAME: Regression Suite
     REPORT_TAG: "@regression"
-    REPORT_THEME: hierarchy
     CI_PLATFORM: Azure DevOps
 
 - task: PublishPipelineArtifact@1

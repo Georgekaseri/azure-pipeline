@@ -7,6 +7,14 @@ const jsonReportPath = path.resolve(
   "../tests/reports/cucumber-report.json"
 );
 const htmlReportDir = path.resolve(__dirname, "../tests/reports/html");
+const suiteName = process.env.REPORT_SUITE_NAME || "Automation Suite";
+const suiteTag = process.env.REPORT_TAG || "all";
+const reportTheme = process.env.REPORT_THEME || "hierarchy";
+const executedAt = new Date().toISOString();
+const ciPlatform = process.env.CI_PLATFORM || "Local";
+const branchName =
+  process.env.BUILD_SOURCEBRANCHNAME || process.env.GITHUB_REF_NAME || "local";
+const buildId = process.env.BUILD_BUILDID || process.env.GITHUB_RUN_ID || "local";
 
 if (!fs.existsSync(jsonReportPath)) {
   console.error(
@@ -16,10 +24,11 @@ if (!fs.existsSync(jsonReportPath)) {
 }
 
 reporter.generate({
+  theme: reportTheme,
   jsonDir: path.dirname(jsonReportPath),
   reportPath: htmlReportDir,
-  reportName: "Playwright + Cucumber Report",
-  pageTitle: "E2E Test Report",
+  reportName: `${suiteName} - Playwright + Cucumber`,
+  pageTitle: `${suiteName} Report`,
   displayDuration: true,
   metadata: {
     browser: {
@@ -33,10 +42,15 @@ reporter.generate({
     }
   },
   customData: {
-    title: "Execution info",
+    title: "Execution Info",
     data: [
       { label: "Project", value: "Azure-pipeline" },
-      { label: "Executed", value: new Date().toISOString() }
+      { label: "Suite", value: suiteName },
+      { label: "Tag", value: suiteTag },
+      { label: "Branch", value: branchName },
+      { label: "Build", value: buildId },
+      { label: "Platform", value: ciPlatform },
+      { label: "Executed", value: executedAt }
     ]
   }
 });

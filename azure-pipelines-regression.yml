@@ -32,6 +32,12 @@ steps:
 
 - script: npm run report:generate
   displayName: Generate HTML report
+  condition: succeededOrFailed()
+  env:
+    REPORT_SUITE_NAME: Regression Suite
+    REPORT_TAG: "@regression"
+    REPORT_THEME: hierarchy
+    CI_PLATFORM: Azure DevOps
 
 - task: PublishPipelineArtifact@1
   displayName: Publish HTML report

@@ -20,6 +20,17 @@ steps:
 
 - script: npx cucumber-js --tags "@smoke"
   displayName: Run smoke scenarios
+  env:
+    JUNIT_REPORT_FILE: tests/reports/cucumber-junit-smoke.xml
+
+- task: PublishTestResults@2
+  displayName: Publish smoke test results
+  condition: succeededOrFailed()
+  inputs:
+    testResultsFormat: JUnit
+    testResultsFiles: tests/reports/cucumber-junit-smoke.xml
+    testRunTitle: Smoke Cucumber Tests
+    mergeTestResults: true
 
 - script: npm run report:generate
   displayName: Generate HTML report
@@ -31,6 +42,7 @@ steps:
 
 - task: PublishPipelineArtifact@1
   displayName: Publish HTML report
+  condition: succeededOrFailed()
   inputs:
     targetPath: tests/reports/html
     artifact: smoke-cucumber-html-report

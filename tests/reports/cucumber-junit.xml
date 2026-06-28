@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<testsuite failures="0" skipped="3" name="cucumber-js" time="0" tests="3">
+  <testcase classname="Bahmni Login - Standard Demo" name="Open login page and verify Standard environment" time="0">
+    <skipped/>
+    <system-out><![CDATA[Given I open the application url "BASE_URL"..............................skipped
+Then the "username" input should be visible..............................skipped
+And the "password" input should be visible...............................skipped
+And the "login" button should be visible.................................skipped
+And the page url should contain "BASE_DOMAIN"............................skipped]]></system-out>
+  </testcase>
+  <testcase classname="Bahmni Login - Standard Demo" name="Open login page and verify Standard environment [1]" time="0">
+    <skipped/>
+    <system-out><![CDATA[Given I open the application url "QA_URL"................................skipped
+Then the "username" input should be visible..............................skipped
+And the "password" input should be visible...............................skipped
+And the "login" button should be visible.................................skipped
+And the page url should contain "QA_DOMAIN"..............................skipped]]></system-out>
+  </testcase>
+  <testcase classname="Bahmni Login - Standard Demo" name="Open login page and verify Standard environment [2]" time="0">
+    <skipped/>
+    <system-out><![CDATA[Given I open the application url "SIT_URL"...............................skipped
+Then the "username" input should be visible..............................skipped
+And the "password" input should be visible...............................skipped
+And the "login" button should be visible.................................skipped
+And the page url should contain "SIT_DOMAIN".............................skipped]]></system-out>
+  </testcase>
+</testsuite>

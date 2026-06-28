@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<testsuite failures="0" skipped="1" name="cucumber-js" time="0" tests="1">
+  <testcase classname="Bahmni Login - Standard Demo" name="Login with valid credentials" time="0">
+    <skipped/>
+    <system-out><![CDATA[Given I open the application url "BASE_URL"..............................skipped
+When I enter credential "BAHMNI_USERNAME" into "username"................skipped
+And I enter credential "BAHMNI_PASSWORD" into "password".................skipped
+And I click the "login" button...........................................skipped
+Then login should succeed away from "#/login"............................skipped
+And login should reach path "#/loginLocation"............................skipped
+When I select option "OPD-1" from "location".............................skipped
+And I click the "continue" button........................................skipped
+Then login should succeed away from "#/loginLocation"....................skipped
+And the page url should contain "BASE_DOMAIN"............................skipped]]></system-out>
+  </testcase>
+</testsuite>
